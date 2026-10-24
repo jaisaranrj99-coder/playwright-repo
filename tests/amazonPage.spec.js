@@ -10,6 +10,7 @@ test('intro', async ({ page }) => {
     const highestRating = await allRatings.map(a => parseFloat(a))
     const topRated = await Math.max(...highestRating);
     console.log('Maximum rated product:', topRated)
+    waitForTimeout(5000);
 
     await page.locator(`//div[@data-cy="title-recipe"]/descendant::h2[contains(@aria-label,"iPhone 17 Pro ")]/ancestor::div[@data-cy="title-recipe"]/following-sibling::div[@data-cy="reviews-block"]/child::div[@class="a-row a-size-small"]/child::span[@aria-hidden="true" and normalize-space()="${topRated}"]/ancestor::div[@data-cy="reviews-block"]/preceding-sibling::div[@data-cy="title-recipe"]/descendant::a[@target="_blank"]`).first().click();
 // await page.locator(`//div[@data-cy="title-recipe"]/descendant::h2[contains(@aria-label,"iPhone 17 Pro ")]/ancestor::div[@data-cy="title-recipe"]/following-sibling::div[@data-cy="reviews-block"]/child::div[@class="a-row a-size-small"]/child::span[@aria-hidden="true" and normalize-space()="${topRated}"]/ancestor::div[@role="listitem"]`).first().click();
