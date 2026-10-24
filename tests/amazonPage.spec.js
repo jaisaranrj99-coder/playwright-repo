@@ -8,6 +8,7 @@ test('intro', async ({ page }) => {
     //const iphoneName = await page.locator(`//div[@data-cy="title-recipe"]/descendant::h2[contains(@class,"a-size-medium")]`).allInnerTexts()
     const allRatings = await page.locator(`//div[@data-cy="title-recipe"]/descendant::h2[contains(@aria-label,"iPhone 17 Pro ")]/ancestor::div[@data-cy="title-recipe"]/following-sibling::div[@data-cy="reviews-block"]/child::div[@class="a-row a-size-small"]/child::span[@aria-hidden="true"]`).allInnerTexts()
     const highestRating = await allRatings.map(a => parseFloat(a))
+    waitForTimeout(4000);
     const topRated = await Math.max(...highestRating);
     console.log('Maximum rated product:', topRated)
     waitForTimeout(5000);
