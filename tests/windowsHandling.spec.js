@@ -8,6 +8,7 @@ test('intro', async ({ context }) => {
     await newtab.getByAltText("Compare").click();
     await newtab.getByAltText("Compare (1)").click();
     await page.bringToFront();
+    waitForTimeout(2000);
     const [newtab1] = await Promise.all([await context.waitForEvent('page'),page.click(`//h5[contains(text(),"Moto Pad 70 Groove 32.25 cm")]`)]);
     await newtab1.getByAltText("Compare").click();
     await newtab1.getByAltText("Compare (2)").click(); 
